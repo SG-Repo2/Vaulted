@@ -1,15 +1,13 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, Pressable } from 'react-native';
+import { StyleSheet, Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Text, View } from '@/components/Themed';
+import { GradientBackground } from '@/components/GradientBackground';
 
 export default function LandingScreen() {
   const router = useRouter();
   return (
-    <ImageBackground
-      source={require('../assets/images/marbleSwatch.png')}
-      style={styles.background}
-    >
+    <GradientBackground>
       <View style={styles.overlay}>
         <Text style={styles.title}>Vaulted</Text>
         <Text style={styles.tagline}>Elevate Your Wardrobe</Text>
@@ -17,18 +15,14 @@ export default function LandingScreen() {
           <Text style={styles.buttonText}>Enter Vaulted</Text>
         </Pressable>
       </View>
-    </ImageBackground>
+    </GradientBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    resizeMode: 'repeat',
-  },
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.65)',
+    backgroundColor: 'transparent',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 24,

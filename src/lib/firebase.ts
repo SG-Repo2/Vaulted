@@ -1,22 +1,28 @@
 // src/lib/firebase.ts
-import { initializeApp }   from 'firebase/app';
-import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { initializeAuth, getReactNativePersistence, onAuthStateChanged } from 'firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getFirestore }    from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
+import Constants from 'expo-constants';
+import { useAuth } from '../store/auth';
 
 const firebaseConfig = {
-    apiKey:            'AIzaSyB9UzvmqpkdC7yMjpCfZ407i—o2I1vdM',
-    authDomain:        'vaulted-71a56.firebaseapp.com',
-    projectId:         'vaulted-71a56',
-    storageBucket:     'vaulted-71a56.appspot.com',
-    messagingSenderId: '1064918724930',
-    appId:             '1:1064918724930:web:81d548e6ed1cbda04098db',
+    apiKey: Constants.expoConfig?.extra?.firebaseApiKey,
+    authDomain: Constants.expoConfig?.extra?.firebaseAuthDomain,
+    projectId: Constants.expoConfig?.extra?.firebaseProjectId,
+    storageBucket: Constants.expoConfig?.extra?.firebaseStorageBucket,
+    messagingSenderId: Constants.expoConfig?.extra?.firebaseMessagingSenderId,
+    appId: Constants.expoConfig?.extra?.firebaseAppId,
 };
 
-// Initialise once
-const app       = initializeApp(firebaseConfig);
-export const db   = getFirestore(app);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
 export const auth = initializeAuth(app, {
-  persistence: getReactNativePersistence(AsyncStorage),
+    persistence: getReactNativePersistence(AsyncStorage),
 });
-// (add getStorage, getFunctions, etc., later if you need them)
+
+// Subscribe to auth state changes
+onAuthStateChanged(auth, (user) => {
+    useAuth.getState().setUser(user);
+});
