@@ -1,4 +1,4 @@
-import { StyleSheet, Button } from 'react-native';
+import { StyleSheet, Button, ImageBackground } from 'react-native';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../../src/lib/firebase';   // ← adjust relative path if needed
 
@@ -13,19 +13,30 @@ export default function TabOneScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
-      <Text>Hello Firebase 👋</Text>
-      <Button title="Ping Firestore" onPress={pingFirebase} />
-    </View>
+    <ImageBackground 
+      source={require('../../assets/images/marbleSwatch.png')} 
+      style={styles.background}
+    >
+      <View style={styles.overlay}>
+        <Text style={styles.title}>Tab One</Text>
+        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+        <EditScreenInfo path="app/(tabs)/index.tsx" />
+        <Text>Hello Firebase 👋</Text>
+        <Button title="Ping Firestore" onPress={pingFirebase} />
+      </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  background: {
     flex: 1,
+    resizeMode: 'repeat',      // tile the marble pattern
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    padding: 16,
     alignItems: 'center',
     justifyContent: 'center',
   },
