@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "vaulted",
+    "name": "Vaulted",
     "slug": "vaulted",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -15,7 +15,8 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "y"
+      "bundleIdentifier": "com.groebe1kenobi.vaulted",
+      "buildNumber": "1"
     },
     "android": {
       "adaptiveIcon": {
