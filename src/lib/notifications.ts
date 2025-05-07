@@ -28,8 +28,14 @@ export async function registerForPushNotifications() {
   }
 
   // Get the token
-  const token = (await Notifications.getExpoPushTokenAsync()).data;
-
+  let token;
+  if (Platform.OS === 'ios') {
+    // For iOS, get the actual APNs token
+    token = (await Notifications.getDevicePushTokenAsync()).data;
+  } else {
+    // For other platforms, use Expo push token
+    token = (await Notifications.getExpoPushTokenAsync()).data;
+  }
   // Store the token in Firestore if user is authenticated
   if (auth.currentUser) {
     await setDoc(doc(db, 'users', auth.currentUser.uid), {

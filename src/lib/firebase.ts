@@ -3,6 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { initializeAuth, getReactNativePersistence, onAuthStateChanged, User } from 'firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getFirestore } from 'firebase/firestore';
+import { Platform } from 'react-native';
 
 // Your Firebase configuration
 const firebaseConfig = {
@@ -19,6 +20,12 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = initializeAuth(app, {
     persistence: getReactNativePersistence(AsyncStorage),
+    // iOS-specific auth optimization
+    ...(Platform.OS === 'ios' && {
+        // Ensure auth is explicitly initialized on main thread for iOS
+        asyncStorage: AsyncStorage,
+        forceSynchronousInit: true
+    })
 });
 
 // This function will be called from the auth store instead of directly importing

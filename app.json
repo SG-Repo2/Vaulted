@@ -23,11 +23,7 @@
         ]
       }
     },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
+
     "plugins": [
       "expo-router",
       [
@@ -39,7 +35,8 @@
       ]
     ],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "tsconfigPaths": true
     },
     "extra": {
       "router": {},
@@ -52,9 +49,6 @@
       "firebaseStorageBucket": "vaulted-71a56.firebasestorage.app",
       "firebaseMessagingSenderId": "1064918724930",
       "firebaseAppId": "1:1064918724930:web:81d548e6ed1bcda04098db"
-    },
-    "android": {
-      "package": "com.groebe1kenobi.vaulted"
     }
   }
 }

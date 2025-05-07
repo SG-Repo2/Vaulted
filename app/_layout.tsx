@@ -6,6 +6,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 import { PaperProvider } from 'react-native-paper';
+import { useAuth } from '@/src/store/auth'; // Import auth store
 
 import { useColorScheme } from '@/components/useColorScheme';
 import { lightTheme, darkTheme } from '@/src/theme';
@@ -23,6 +24,14 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  // Initialize auth listener early
+  const initializeAuthListener = useAuth(state => state.initializeAuthListener);
+  
+  useEffect(() => {
+    // Initialize auth listener on app start
+    initializeAuthListener();
+  }, [initializeAuthListener]);
+  
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     SFPro: require('../assets/fonts/SF-Pro.ttf'),
