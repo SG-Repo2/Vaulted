@@ -18,7 +18,9 @@
       "bundleIdentifier": "com.groebe1kenobi.vaulted",
       "buildNumber": "1",
       "infoPlist": {
-        "UIBackgroundModes": ["remote-notification"]
+        "UIBackgroundModes": [
+          "remote-notification"
+        ]
       }
     },
     "web": {
@@ -34,7 +36,8 @@
           "icon": "./assets/images/icon.png",
           "color": "#ffffff"
         }
-      ]
+      ],
+      "expo-linear-gradient"
     ],
     "experiments": {
       "typedRoutes": true
@@ -50,6 +53,9 @@
       "firebaseStorageBucket": "vaulted-71a56.appspot.com",
       "firebaseMessagingSenderId": "1064918724930",
       "firebaseAppId": "1:1064918724930:web:81d548e6ed1cbda04098db"
+    },
+    "android": {
+      "package": "com.groebe1kenobi.vaulted"
     }
   }
 }
