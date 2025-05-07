@@ -1,11 +1,13 @@
 import { create } from 'zustand';
 import { User } from 'firebase/auth';
 import { registerForPushNotifications } from '../lib/notifications';
+import { setupAuthListener } from '../lib/firebase';
 
 interface AuthState {
   user: User | null;
   setUser: (user: User | null) => void;
   registerForNotifications: () => Promise<boolean>;
+  initializeAuthListener: () => void;
 }
 
 export const useAuth = create<AuthState>((set) => ({
@@ -20,4 +22,12 @@ export const useAuth = create<AuthState>((set) => ({
   registerForNotifications: async () => {
     return await registerForPushNotifications();
   },
+  initializeAuthListener: () => {
+    setupAuthListener((user) => {
+      set({ user });
+      if (user) {
+        useAuth.getState().registerForNotifications();
+      }
+    });
+  }
 }));

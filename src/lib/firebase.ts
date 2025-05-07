@@ -1,9 +1,8 @@
 // src/lib/firebase.ts
 import { initializeApp } from 'firebase/app';
-import { initializeAuth, getReactNativePersistence, onAuthStateChanged } from 'firebase/auth';
+import { initializeAuth, getReactNativePersistence, onAuthStateChanged, User } from 'firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getFirestore } from 'firebase/firestore';
-import { useAuth } from '../store/auth';
 
 // Your Firebase configuration
 const firebaseConfig = {
@@ -22,7 +21,9 @@ export const auth = initializeAuth(app, {
     persistence: getReactNativePersistence(AsyncStorage),
 });
 
-// Subscribe to auth state changes
-onAuthStateChanged(auth, (user) => {
-    useAuth.getState().setUser(user);
-});
+// This function will be called from the auth store instead of directly importing
+export const setupAuthListener = (setUserCallback: (user: User | null) => void) => {
+    return onAuthStateChanged(auth, (user) => {
+        setUserCallback(user);
+    });
+};
