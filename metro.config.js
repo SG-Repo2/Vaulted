@@ -1,8 +1,12 @@
 // metro.config.js
 const { getDefaultConfig } = require('expo/metro-config');
 
-// Firebase ≥ 11.7 uses ESM modules and proper React Native entry points
-// so we can use the default config
-const config = getDefaultConfig(__dirname);
+const defaultConfig = getDefaultConfig(__dirname);
 
-module.exports = config;
+// Allow resolving Firebase’s CJS sources
+defaultConfig.resolver.sourceExts.push('cjs');
+
+// Disable Node-style package exports resolution to avoid dual‐package issues
+defaultConfig.resolver.unstable_enablePackageExports = false;
+
+module.exports = defaultConfig;

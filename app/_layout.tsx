@@ -6,10 +6,16 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
 import { PaperProvider } from 'react-native-paper';
-import { useAuth } from '@/src/store/auth'; // Import auth store
+
+// Import both the auth store and firebase directly
+import { useAuth } from '@/src/store/auth';
+import { registerAuth } from '@/src/lib/firebase'; // Import the register function
 
 import { useColorScheme } from '@/components/useColorScheme';
 import { lightTheme, darkTheme } from '@/src/theme';
+
+// Ensure auth is registered early in the app lifecycle
+registerAuth();
 
 export {
   // Catch any errors thrown by the Layout component.

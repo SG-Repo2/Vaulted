@@ -18,7 +18,14 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Making sure Firebase is initialized properly
+console.log('Firebase app initialized:', app.name);
+
+// Initialize Firestore
 export const db = getFirestore(app);
+
+// Initialize Auth with proper persistence
 export const auth = initializeAuth(app, {
     persistence: getReactNativePersistence(AsyncStorage),
     // iOS-specific auth optimization
@@ -29,8 +36,16 @@ export const auth = initializeAuth(app, {
     })
 });
 
+// Register auth component explicitly to avoid initialization issues
+export const registerAuth = () => {
+    console.log('Auth module registered:', auth?.currentUser?.uid || 'no user');
+    return auth;
+};
+
 // This function will be called from the auth store instead of directly importing
 export const setupAuthListener = (setUserCallback: (user: User | null) => void) => {
+    // Make sure auth is registered
+    registerAuth();
     return onAuthStateChanged(auth, (user) => {
         setUserCallback(user);
     });

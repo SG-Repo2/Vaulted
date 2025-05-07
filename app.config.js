@@ -23,6 +23,9 @@ export default {
         ]
       }
     },
+    android: {
+        package: "com.groebe1kenobi.vaulted",
+    },
     plugins: [
       "expo-router",
       [

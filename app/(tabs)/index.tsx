@@ -1,4 +1,3 @@
-// Update the export format in app/(tabs)/index.tsx
 import { StyleSheet, Button } from 'react-native';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../../src/lib/firebase';
@@ -7,7 +6,7 @@ import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 import { GradientBackground } from '@/components/GradientBackground';
 
-// Change to named export declaration for clarity
+// Make sure to use a proper function declaration for default export
 export default function TabOneScreen() {
   const pingFirebase = async () => {
     await addDoc(collection(db, 'test'), { created: Date.now() });
