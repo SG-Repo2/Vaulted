@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { User } from 'firebase/auth';
-import { registerForPushNotifications } from '../lib/notifications';
-import { setupAuthListener } from '../lib/firebase';
+import { registerForPushNotifications } from '../../services/notifications';
+import { setupAuthListener } from '../../services/firebase';
 
 interface AuthState {
   user: User | null;

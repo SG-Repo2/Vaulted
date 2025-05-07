@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
-import { GradientBackground } from '@/components/GradientBackground';
+import EditScreenInfo from '../../components/layout/EditScreenInfo';
+import { Text, View } from '../../components/ui/Themed';
+import { GradientBackground } from '../../components/layout/GradientBackground';
 
 export default function TabTwoScreen() {
   return (

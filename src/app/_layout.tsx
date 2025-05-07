@@ -8,11 +8,11 @@ import 'react-native-reanimated';
 import { PaperProvider } from 'react-native-paper';
 
 // Import both the auth store and firebase directly
-import { useAuth } from '@/src/store/auth';
-import { registerAuth } from '@/src/lib/firebase'; // Import the register function
+import { useAuth } from '../features/auth/store';
+import { registerAuth } from '../services/firebase'; // Updated path
 
-import { useColorScheme } from '@/components/useColorScheme';
-import { lightTheme, darkTheme } from '@/src/theme';
+import { useColorScheme } from '../hooks/useColorScheme';
+import { lightTheme, darkTheme } from '../theme';
 
 // Ensure auth is registered early in the app lifecycle
 registerAuth();
@@ -37,10 +37,10 @@ export default function RootLayout() {
     // Initialize auth listener on app start
     initializeAuthListener();
   }, [initializeAuthListener]);
-  
+   
   const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    SFPro: require('../assets/fonts/SF-Pro.ttf'),
+    SpaceMono: require('../../assets/fonts/SpaceMono-Regular.ttf'),
+    SFPro: require('../../assets/fonts/SF-Pro.ttf'),
     ...FontAwesome.font,
   });
 

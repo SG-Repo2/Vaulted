@@ -4,7 +4,7 @@
     "strict": true,
     "paths": {
       "@/*": [
-        "./*"
+        "./src/*"
       ],
       "firebase/auth": [
         "./node_modules/firebase/auth/dist/auth-react-native.d.ts"

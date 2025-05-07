@@ -1,0 +1,15 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "paths": {
+        "@/*": ["./src/*"],
+        "@components/*": ["./src/components/*"],
+        "@features/*": ["./src/features/*"],
+        "@services/*": ["./src/services/*"],
+        "@hooks/*": ["./src/hooks/*"],
+        "@theme/*": ["./src/theme/*"],
+        "@utils/*": ["./src/utils/*"],
+        "@types/*": ["./src/types/*"]
+      }
+    }
+  }

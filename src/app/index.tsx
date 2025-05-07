@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Text, View } from '@/components/Themed';
-import { GradientBackground } from '@/components/GradientBackground';
+import { Text, View } from '../components/ui/Themed';
+import { GradientBackground } from '../components/layout/GradientBackground';
 
 export default function LandingScreen() {
   const router = useRouter();

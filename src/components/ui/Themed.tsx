@@ -5,8 +5,10 @@
 
 import { Text as DefaultText, View as DefaultView } from 'react-native';
 import { ms, vs } from 'react-native-size-matters';
-import Colors from '@/constants/Colors';
-import { useColorScheme } from './useColorScheme';
+import Colors from '../../theme/Colors';
+import { ExternalLink } from '../layout/ExternalLink';
+import { MonoText } from './StyledText';
+import { useColorScheme } from '../../hooks/useColorScheme';
 
 const defaultFont = 'SFPro-Regular';
 const fontConfig = {

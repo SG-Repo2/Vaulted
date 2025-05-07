@@ -1,10 +1,10 @@
 import { StyleSheet, Button } from 'react-native';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
-import { db } from '../../src/lib/firebase';
+import { db } from '../../services/firebase';
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
-import { GradientBackground } from '@/components/GradientBackground';
+import EditScreenInfo from '../../components/layout/EditScreenInfo';
+import { Text, View } from '../../components/ui/Themed';
+import { GradientBackground } from '../../components/layout/GradientBackground';
 
 // Make sure to use a proper function declaration for default export
 export default function TabOneScreen() {
