@@ -36,8 +36,7 @@
           "icon": "./assets/images/icon.png",
           "color": "#ffffff"
         }
-      ],
-      "expo-linear-gradient"
+      ]
     ],
     "experiments": {
       "typedRoutes": true

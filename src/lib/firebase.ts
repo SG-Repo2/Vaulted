@@ -3,16 +3,16 @@ import { initializeApp } from 'firebase/app';
 import { initializeAuth, getReactNativePersistence, onAuthStateChanged } from 'firebase/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getFirestore } from 'firebase/firestore';
-import Constants from 'expo-constants';
 import { useAuth } from '../store/auth';
 
+// Your Firebase configuration
 const firebaseConfig = {
-    apiKey: Constants.expoConfig?.extra?.firebaseApiKey,
-    authDomain: Constants.expoConfig?.extra?.firebaseAuthDomain,
-    projectId: Constants.expoConfig?.extra?.firebaseProjectId,
-    storageBucket: Constants.expoConfig?.extra?.firebaseStorageBucket,
-    messagingSenderId: Constants.expoConfig?.extra?.firebaseMessagingSenderId,
-    appId: Constants.expoConfig?.extra?.firebaseAppId,
+    apiKey: "AIzaSyB9u2ymopkpdC7YMjpCFz407i-_o2IivdM",
+    authDomain: "vaulted-71a56.firebaseapp.com",
+    projectId: "vaulted-71a56",
+    storageBucket: "vaulted-71a56.firebasestorage.app",
+    messagingSenderId: "1064918724930",
+    appId: "1:1064918724930:web:81d548e6ed1bcda04098db"
 };
 
 // Initialize Firebase
